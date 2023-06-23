@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'https://api.spotify.com/v1';
-const ACCESS_TOKEN = 'BQDHZ9_JRWAF36TuZSdgrNvVCTBaorac9RgdnfarHt5P2EbqMpX4xkfOsS552mXjhqSL2i9-19E3YRLpbRo7bv-0xcc4Sn9yLJbHVx_Ii5QiYA9uibA'
+const ACCESS_TOKEN = 'BQA_v3CQpFVTMvd1Q1Sg0Xj_2w4KCZcAcUFhlnkrf0NNpiDGSGGX9_BMcrDeovp8kUcz3Lji3tbTlRxn-Uygm5KVFP5S919MWeDIWZnl1eeQN4JEfUA'
 
 export async function getTopArtists() {
   try {
@@ -10,7 +10,7 @@ export async function getTopArtists() {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
     });
-    return response.data.items;
+    return response.data.tracks;
   } catch (error) {
     console.error('Error retrieving top artists:', error);
     return [];
@@ -24,7 +24,7 @@ export async function getTopPlaylists() {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
     });
-    return response.data.items;
+    return response.data.playlists.items;
   } catch (error) {
     console.error('Error retrieving top playlists:', error);
     return [];

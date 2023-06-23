@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from 'react';
 import { getTopArtists, getTopPlaylists } from './pages/api';
+import CardList from './components/CardList';
 
 export default function Home() {
   const [topArtists, setTopArtists] = useState([]);
@@ -23,19 +24,12 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Top Artists</h1>
-      <ul>
-        {topArtists && topArtists.map((artist) => (
-          <li key={artist.id}>{artist.name}</li>
-        ))}
-      </ul>
+
+      <h1>Artist Top Traks</h1>
+      <CardList data={topArtists} />
 
       <h1>Top Playlists</h1>
-      <ul>
-        {topPlaylists && topPlaylists.map((playlist) => (
-          <li key={playlist.id}>{playlist.name}</li>
-        ))}
-      </ul>
+      <CardList data={topPlaylists} />
     </div>
   );
 }
