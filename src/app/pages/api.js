@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'https://api.spotify.com/v1';
-const ACCESS_TOKEN = 'BQA_v3CQpFVTMvd1Q1Sg0Xj_2w4KCZcAcUFhlnkrf0NNpiDGSGGX9_BMcrDeovp8kUcz3Lji3tbTlRxn-Uygm5KVFP5S919MWeDIWZnl1eeQN4JEfUA'
+const ACCESS_TOKEN = 'BQBzXG2xsq1yEstWgxUkB4mopQbBE0crxhkq9L--hmHEHOuidGt6MbVJsdVb7mi2QCDDT05MLjNQjy-ajAxOAHlRyjOLP-4hjIygR3-BKJslKrSfcLk'
 
 export async function getTopArtists() {
   try {

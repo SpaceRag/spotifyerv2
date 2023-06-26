@@ -1,7 +1,9 @@
-"use client"
-import { useEffect, useState } from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
 import { getTopArtists, getTopPlaylists } from './pages/api';
-import CardList from './components/CardList';
+import FeaturedPlaylistsCard from './components/FeaturedPlaylistsCard';
+import CategoryPlaylistsCard from './components/CategoryPlaylistsCard';
+import NavBar from './components/NavBar';
 
 export default function Home() {
   const [topArtists, setTopArtists] = useState([]);
@@ -24,12 +26,15 @@ export default function Home() {
 
   return (
     <div>
-
-      <h1>Artist Top Traks</h1>
-      <CardList data={topArtists} />
-
-      <h1>Top Playlists</h1>
-      <CardList data={topPlaylists} />
+      <>
+      <NavBar />
+      </>
+      <h1>Featured Playlists</h1>
+      <FeaturedPlaylistsCard />
+      <>
+      <h1>Top Artists</h1>
+      <CategoryPlaylistsCard />
+      </>
     </div>
   );
 }

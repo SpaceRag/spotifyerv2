@@ -105,3 +105,13 @@ a {
     color-scheme: dark;
   }
 }
+
+.p-carousel-prev-icon,
+.p-carousel-next-icon {
+  padding: 3px;
+  height: 60px;
+  border-radius: 10%;
+  color: black;
+  background-color: rgb(148, 148, 148);
+  
+}
