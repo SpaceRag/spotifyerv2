@@ -115,3 +115,56 @@ a {
   background-color: rgb(148, 148, 148);
   
 }
+
+.p-carousel-prev-icon,
+.p-carousel-next-icon:hover {
+  background-color: #4ada45;
+
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.searchButton {
+  padding: 12px;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  background-color: gray;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: rgb(83, 214, 57);
+}
+
+@keyframes p-progress-spinner-color {
+  100%,
+  0% {
+      stroke: #1fff1f;
+  }
+  40% {
+      stroke: #0057e7;
+  }
+  66% {
+      stroke: #16ff22;
+  }
+  80%,
+  90% {
+      stroke: #ffa700;
+  }
+}

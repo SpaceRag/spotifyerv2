@@ -4,6 +4,9 @@ import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
 import styles from "./categoryPlaylistsCard.module.css";
 
+import { ProgressSpinner } from 'primereact/progressspinner';
+ 
+
 const CategoryPlaylistsCard = ({ accessToken }) => {
   const [categoryPlaylists, setCategoryPlaylists] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,13 +43,17 @@ const CategoryPlaylistsCard = ({ accessToken }) => {
   }, [accessToken]);
 
   const responsiveSettings = [
-    { breakpoint: "1024px", numVisible: 5 },
+    { breakpoint: "1024px", numVisible: 6 },
     { breakpoint: "768px", numVisible: 2 },
     { breakpoint: "560px", numVisible: 1 },
   ];
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+    if (isLoading) {
+      return (
+          <div className='flex align-items-center justify-content-center min-h-screen bg-black-alpha-90'>
+              <ProgressSpinner className='' animationDuration=".7s" />
+          </div>
+      );
   }
 
   return (
@@ -54,7 +61,7 @@ const CategoryPlaylistsCard = ({ accessToken }) => {
       <h2 className={styles.categoryTitle}>Punk Playlists</h2>
       <Carousel
         value={categoryPlaylists}
-        numVisible={5}
+        numVisible={6}
         numScroll={1}
         responsive={responsiveSettings}
         itemTemplate={(playlist) => (

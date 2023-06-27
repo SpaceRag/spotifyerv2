@@ -3,6 +3,7 @@ import { Carousel } from "primereact/carousel";
 import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
 import styles from "./featuredPlaylistsCard.module.css";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const FeaturedPlaylistsCard = ({ accessToken }) => {
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
@@ -12,7 +13,7 @@ const FeaturedPlaylistsCard = ({ accessToken }) => {
     async function fetchFeaturedPlaylists() {
       try {
         const response = await fetch(
-          "https://api.spotify.com/v1/browse/featured-playlists?limit=10",
+          "https://api.spotify.com/v1/browse/featured-playlists?",
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -39,13 +40,17 @@ const FeaturedPlaylistsCard = ({ accessToken }) => {
   }, [accessToken]);
 
   const responsiveSettings = [
-    { breakpoint: "1024px", numVisible: 4 },
+    { breakpoint: "1024px", numVisible: 5 },
     { breakpoint: "768px", numVisible: 2 },
     { breakpoint: "560px", numVisible: 1 },
   ];
 
   if (isLoading) {
-    return <div>Loading...</div>;
+      return (
+          <div className='flex align-items-center justify-content-center min-h-screen bg-black-alpha-90'>
+              <ProgressSpinner className='' animationDuration=".7s" />
+          </div>
+      );
   }
 
   return (
@@ -54,7 +59,7 @@ const FeaturedPlaylistsCard = ({ accessToken }) => {
         previconclassname="p-carousel-prev-icon"
         nexticonclassname="p-carousel-next-icon"
         value={featuredPlaylists}
-        numVisible={4}
+        numVisible={5}
         numScroll={1}
         responsive={responsiveSettings}
         itemTemplate={(playlist) => (
