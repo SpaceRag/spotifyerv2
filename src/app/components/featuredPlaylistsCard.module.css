@@ -7,6 +7,12 @@
   border-radius: 5px;
   padding: 10px;
   width: 320px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.playlistCard:hover {
+  background-color: #7d7c7c;
 }
 
 .playlistImage {

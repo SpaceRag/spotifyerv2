@@ -4,8 +4,9 @@ import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
 import styles from "./featuredPlaylistsCard.module.css";
 
-const FeaturedPlaylistsCard = () => {
+const FeaturedPlaylistsCard = ({ accessToken }) => {
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchFeaturedPlaylists() {
@@ -14,8 +15,7 @@ const FeaturedPlaylistsCard = () => {
           "https://api.spotify.com/v1/browse/featured-playlists?limit=10",
           {
             headers: {
-              Authorization:
-                "Bearer BQBoMRumO11mjpcUc2njs_8CKhsLoXdUWMU-SG6rJna2hI3H_sZTgZJdrRb1RPyq4pUwS-LDkNlyB8NVrIp905w854M0KfYRcoi2f3SzAVAJrKdAU8Q",
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );
@@ -30,11 +30,13 @@ const FeaturedPlaylistsCard = () => {
         }
       } catch (error) {
         console.log("Une erreur s'est produite lors de la requête API", error);
+      } finally {
+        setIsLoading(false);
       }
     }
 
     fetchFeaturedPlaylists();
-  }, []);
+  }, [accessToken]);
 
   const responsiveSettings = [
     { breakpoint: "1024px", numVisible: 4 },
@@ -42,11 +44,15 @@ const FeaturedPlaylistsCard = () => {
     { breakpoint: "560px", numVisible: 1 },
   ];
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className={styles.featuredPlaylists}>
       <Carousel
-        prevIconClassName="p-carousel-prev-icon"
-        nextIconClassName="p-carousel-next-icon"
+        previconclassname="p-carousel-prev-icon"
+        nexticonclassname="p-carousel-next-icon"
         value={featuredPlaylists}
         numVisible={4}
         numScroll={1}
