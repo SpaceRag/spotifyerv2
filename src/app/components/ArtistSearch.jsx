@@ -9,7 +9,7 @@ const ArtistSearch = ({ accessToken }) => {
   const [artists, setArtists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [selectedArtist, setSelectedArtist] = useState(null);
 
   const handleSearch = async (searchTerm) => {
     setIsLoading(true);
@@ -34,6 +34,7 @@ const ArtistSearch = ({ accessToken }) => {
 
         setArtists(foundArtists);
         setSearchTerm(searchTerm);
+        console.log(foundArtists);
       } else {
         console.log("Erreur lors de la recherche d'artistes");
       }
@@ -53,13 +54,18 @@ const ArtistSearch = ({ accessToken }) => {
     { breakpoint: "560px", numVisible: 1 },
   ];
 
+  const handleArtistClick = (artistId) => {
+    setSelectedArtist(artistId);
+    console.log(selectedArtist);
+  };
+
   if (isLoading) {
     return (
-        <div className='flex align-items-center justify-content-center min-h-screen bg-black-alpha-90'>
-            <ProgressSpinner className='' animationDuration=".7s" />
-        </div>
+      <div className="flex align-items-center justify-content-center min-h-screen bg-black-alpha-90">
+        <ProgressSpinner className="" animationDuration=".7s" />
+      </div>
     );
-}
+  }
 
   return (
     <div className={styles.artistSearch}>
@@ -83,26 +89,30 @@ const ArtistSearch = ({ accessToken }) => {
       <h1 className={styles.categoryTitle}>{searchTerm}</h1>
 
       {artists.length > 0 && (
-      <Carousel
-        previconclassname="p-carousel-prev-icon"
-        nexticonclassname="p-carousel-next-icon"
-        value={artists}
-        numVisible={5}
-        numScroll={1}
-        responsive={responsiveSettings}
-        itemTemplate={(artist) => (
-          <div key={artist.id} className={styles.artistCard}>
-            <img
-              src={artist.images[0].url}
-              alt={artist.name}
-              className={styles.artistImage}
-            />
-            <h3 className={styles.artistTitle}>{artist.name}</h3>
-          </div>
-        )}
-      />
-    )}
-  </div>
+        <Carousel
+          previconclassname="p-carousel-prev-icon"
+          nexticonclassname="p-carousel-next-icon"
+          value={artists}
+          numVisible={5}
+          numScroll={1}
+          responsive={responsiveSettings}
+          itemTemplate={(artist) => (
+            <div
+              key={artist.id}
+              className={styles.artistCard}
+              onClick={() => handleArtistClick(artist.id)}
+            >
+              <img
+                src={artist.images[0].url}
+                alt={artist.name}
+                className={styles.artistImage}
+              />
+              <h3 className={styles.artistTitle}>{artist.name}</h3>
+            </div>
+          )}
+        />
+      )}
+    </div>
   );
 };
 

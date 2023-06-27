@@ -42,7 +42,7 @@ export const AccessTokenProvider = ({ children }) => {
   function setNewAccessToken(newAccessToken, expiresIn) {
     setAccessToken(newAccessToken);
 
-    const expirationTime = new Date().getTime() + expiresIn * 1000;
+    const expirationTime = new Date().getTime() + expiresIn + "secondes";
 
     localStorage.setItem("accessToken", newAccessToken);
     localStorage.setItem("tokenExpirationTime", expirationTime);
