@@ -4,6 +4,7 @@ import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
 import styles from "./artistSearch.module.css";
 import { ProgressSpinner } from "primereact/progressspinner";
+import ArtistDetails from "./ArtistDetails";
 
 const ArtistSearch = ({ accessToken }) => {
   const [artists, setArtists] = useState([]);
@@ -56,8 +57,15 @@ const ArtistSearch = ({ accessToken }) => {
 
   const handleArtistClick = (artistId) => {
     setSelectedArtist(artistId);
-    console.log(selectedArtist);
   };
+
+  const handleCloseArtistDetails = () => {
+    setSelectedArtist(null);
+  };
+
+  useEffect(() => {
+    console.log(selectedArtist);
+  }, [selectedArtist]);
 
   if (isLoading) {
     return (
@@ -68,50 +76,62 @@ const ArtistSearch = ({ accessToken }) => {
   }
 
   return (
-    <div className={styles.artistSearch}>
-      <form
-        className="searchForm"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSearch(e.target.elements.searchTerm.value);
-        }}
-      >
-        <input
-          className="searchInput"
-          type="text"
-          name="searchTerm"
-          placeholder="Search for an artist"
-        />
-        <button className="searchButton" type="submit">
-          Search
-        </button>
-      </form>
-      <h1 className={styles.categoryTitle}>{searchTerm}</h1>
-
-      {artists.length > 0 && (
-        <Carousel
-          previconclassname="p-carousel-prev-icon"
-          nexticonclassname="p-carousel-next-icon"
-          value={artists}
-          numVisible={5}
-          numScroll={1}
-          responsive={responsiveSettings}
-          itemTemplate={(artist) => (
-            <div
-              key={artist.id}
-              className={styles.artistCard}
-              onClick={() => handleArtistClick(artist.id)}
-            >
-              <img
-                src={artist.images[0].url}
-                alt={artist.name}
-                className={styles.artistImage}
-              />
-              <h3 className={styles.artistTitle}>{artist.name}</h3>
-            </div>
-          )}
-        />
+    <div className={styles.container}>
+      {selectedArtist && (
+        <div className={styles.artistDetails}>
+          <ArtistDetails
+            artistId={selectedArtist}
+            accessToken={accessToken}
+            onClose={handleCloseArtistDetails}
+          />
+        </div>
       )}
+
+      <div className={styles.artistSearch}>
+        <form
+          className="searchForm"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch(e.target.elements.searchTerm.value);
+          }}
+        >
+          <input
+            className="searchInput"
+            type="text"
+            name="searchTerm"
+            placeholder="Search for an artist"
+          />
+          <button className="searchButton" type="submit">
+            Search
+          </button>
+        </form>
+        <h1 className={styles.categoryTitle}>{searchTerm}</h1>
+
+        {artists.length > 0 && (
+          <Carousel
+            previconclassname="p-carousel-prev-icon"
+            nexticonclassname="p-carousel-next-icon"
+            value={artists}
+            numVisible={5}
+            numScroll={1}
+            responsive={responsiveSettings}
+            itemTemplate={(artist) => (
+              <div
+                key={artist.id}
+                className={styles.artistCard}
+                onClick={() => handleArtistClick(artist.id)}
+              >
+                <img
+                  src={artist.images[0].url}
+                  alt={artist.name}
+                  className={styles.artistImage}
+                />
+                <h3 className={styles.artistTitle}>{artist.name}</h3>
+              </div>
+            )}
+          />
+        )}
+      </div>
     </div>
   );
 };

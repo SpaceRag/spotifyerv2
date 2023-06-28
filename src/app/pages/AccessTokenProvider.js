@@ -27,7 +27,7 @@ export const AccessTokenProvider = ({ children }) => {
           const newAccessToken = data.access_token;
           const expiresIn = data.expires_in;
           setNewAccessToken(newAccessToken, expiresIn);
-          console.log("Le token est bien récuperer depuis le fetchAcessToken");
+          console.log("L'access token est bien récuperer depuis le fetchAcessToken", newAccessToken);
         } else {
           console.log("Échec de la récupération de l'access token");
         }

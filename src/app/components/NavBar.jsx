@@ -16,13 +16,13 @@ const NavBar = () => {
           </a>
         </li>
         <li className={styles.navbarItem}>
-          <a href="/albums" className={styles.navbarLink}>
-            Albums
+          <a href="/artists" className={styles.navbarLink}>
+            Artistes
           </a>
         </li>
         <li className={styles.navbarItem}>
-          <a href="/artists" className={styles.navbarLink}>
-            Artistes
+          <a href="/Category" className={styles.navbarLink}>
+            Category
           </a>
         </li>
       </ul>

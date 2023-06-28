@@ -1,0 +1,167 @@
+.artistDetailsContainer {
+  position: absolute;
+  max-height: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: rgba(39, 39, 39, 0.973);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0px 5px rgba(2, 255, 2, 0.726);
+}
+
+.closeButton {
+  background-color: #494949;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: #4ada45;
+}
+
+.artistInfo {
+  display: flex;
+}
+
+.artistImageContainer {
+  margin-right: 20px;
+}
+
+.artistImageContainer img {
+  max-width: 200px;
+  max-height: 200px;
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.artistTracks {
+  flex-grow: 1;
+  background-color: gray;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: auto;
+  max-height: 600px;
+}
+
+.topTracks {
+  margin-top: 20px;
+}
+
+.trackImageContainer {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.trackImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.topTracks h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.trackList {
+  list-style: none;
+  padding: 0;
+}
+
+.trackItem {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  background-color: #494949;
+  border-radius: 5px;
+}
+
+.trackItem:hover {
+  background-color: #4ada45;
+}
+
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.trackName {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.trackDuration {
+  color: #4ada45;
+  font-size: 14px;
+}
+
+.relatedArtists {
+  margin-top: 20px;
+}
+
+.relatedArtists h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.relatedArtistList {
+  list-style: none;
+  padding: 0;
+}
+
+.relatedArtistItem {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  background-color: #494949;
+  border-radius: 5px;
+}
+
+.relatedArtistItem:hover {
+  background-color: #4ada45;
+}
+
+.relatedArtistImageContainer {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.relatedArtistImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.relatedArtistInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.relatedArtistName {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.relatedArtistImageContainer {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  overflow: hidden; /* Ajoutez cette ligne */
+}
+
+.relatedArtistImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
