@@ -15,16 +15,6 @@ const NavBar = () => {
             Playlists
           </a>
         </li>
-        <li className={styles.navbarItem}>
-          <a href="/artists" className={styles.navbarLink}>
-            Artistes
-          </a>
-        </li>
-        <li className={styles.navbarItem}>
-          <a href="/Category" className={styles.navbarLink}>
-            Category
-          </a>
-        </li>
       </ul>
     </nav>
   );

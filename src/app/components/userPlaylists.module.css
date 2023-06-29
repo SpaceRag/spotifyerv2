@@ -1,0 +1,94 @@
+.userPlaylistsContainer {
+  margin-bottom: 50px;
+  padding: 5px;
+  background-color: #6b6b6b;
+  border-radius: 5px;
+  
+}
+
+.playlistInput {
+  flex: 1;
+  padding: 10px;
+  margin-right: 1rem;
+  margin-top: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* .playlistHeader {
+  margin: 10px;
+  background-color: #7a7a7a;
+  border-radius: 5px;
+  
+} */
+
+.playlistHeader h3 {
+  color: #4ada45;
+}
+
+.createButton {
+  background-color: #494949;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.createButton:hover {
+  background-color: #4ada45;
+}
+
+.deleteButton {
+  background-color: rgb(245, 98, 98);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+.playlist {
+  margin-bottom: 10px;
+}
+
+.playlist h3 {
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.addTrackContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.trackInput {
+  flex: 1;
+  padding: 10px;
+  margin-right: 1rem;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.addTrackButton {
+  background-color: #494949;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.addTrackButton:hover {
+  background-color: #4ada45;
+}

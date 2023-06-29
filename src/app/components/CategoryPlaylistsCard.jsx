@@ -26,7 +26,7 @@ const CategoryPlaylistsCard = ({ accessToken }) => {
         if (response.ok) {
           const data = await response.json();
           setCategoryPlaylists(data.playlists.items);
-          console.log(data);
+          // console.log(data);
         } else {
           console.log(
             "Une erreur s'est produite lors de la récupération des playlists de la catégorie"

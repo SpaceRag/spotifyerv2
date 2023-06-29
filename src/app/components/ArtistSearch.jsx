@@ -35,7 +35,7 @@ const ArtistSearch = ({ accessToken }) => {
 
         setArtists(foundArtists);
         setSearchTerm(searchTerm);
-        console.log(foundArtists);
+        // console.log(foundArtists);
       } else {
         console.log("Erreur lors de la recherche d'artistes");
       }
@@ -64,7 +64,7 @@ const ArtistSearch = ({ accessToken }) => {
   };
 
   useEffect(() => {
-    console.log(selectedArtist);
+    // console.log(selectedArtist);
   }, [selectedArtist]);
 
   if (isLoading) {

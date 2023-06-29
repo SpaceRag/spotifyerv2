@@ -1,0 +1,33 @@
+
+.userFavoritesContainer {
+    margin-bottom: 20px;
+  }
+  
+  .favoritesList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .favoriteItem {
+    margin-bottom: 5px;
+  }
+  
+  .addFavoriteContainer {
+    margin-top: 10px;
+  }
+  
+  .addFavoriteButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .addFavoriteButton:focus {
+    outline: none;
+  }
+  
+  .addFavoriteButton i {
+    color: #f00;
+  }
+  

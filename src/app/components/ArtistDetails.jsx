@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "./artistDetails.module.css";
+// import { MusicContext } from "./MusicContext";
 
 const ArtistDetails = ({ artistId, accessToken, onClose }) => {
   const [artistDetails, setArtistDetails] = useState(null);
   const [topTracks, setTopTracks] = useState([]);
   const [relatedArtists, setRelatedArtists] = useState([]);
+  const [favoriteTracks, setFavoriteTracks] = useState([]);
 
   const formatDuration = (durationMs) => {
     const minutes = Math.floor(durationMs / 60000);
     const seconds = Math.floor((durationMs % 60000) / 1000);
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  };
+
+  // const { addFavoriteMusic } = useContext(MusicContext);
+
+  const handleAddToFavorites = (track) => {
+    setFavoriteTracks([...favoriteTracks, track]);
+    console.log("Ajout aux favs", favoriteTracks);
   };
 
   useEffect(() => {
@@ -27,7 +36,7 @@ const ArtistDetails = ({ artistId, accessToken, onClose }) => {
         if (artistResponse.ok) {
           const artistData = await artistResponse.json();
           setArtistDetails(artistData);
-          console.log(artistData);
+          // console.log(artistData);
         } else {
           console.log(
             "Erreur lors de la récupération des détails de l'artiste"
@@ -46,7 +55,7 @@ const ArtistDetails = ({ artistId, accessToken, onClose }) => {
         if (topTracksResponse.ok) {
           const topTracksData = await topTracksResponse.json();
           setTopTracks(topTracksData.tracks);
-          console.log(topTracksData);
+          // console.log(topTracksData);
         } else {
           console.log(
             "Erreur lors de la récupération des top tracks de l'artiste"
@@ -65,7 +74,7 @@ const ArtistDetails = ({ artistId, accessToken, onClose }) => {
         if (relatedArtistsResponse.ok) {
           const relatedArtistsData = await relatedArtistsResponse.json();
           setRelatedArtists(relatedArtistsData.artists.slice(0, 2));
-          console.log(relatedArtistsData);
+          // console.log(relatedArtistsData);
         } else {
           console.log("Erreur lors de la récupération des artistes associés");
         }
@@ -143,6 +152,9 @@ const ArtistDetails = ({ artistId, accessToken, onClose }) => {
                     <span className={styles.trackName}>{track.name}</span>
                     <span className={styles.trackDuration}>
                       {formatDuration(track.duration_ms)}
+                      <button className={styles.AddButton} onClick={() => handleAddToFavorites(track)}>
+                        Add to Favorits
+                      </button>
                     </span>
                   </div>
                 </li>
@@ -152,6 +164,7 @@ const ArtistDetails = ({ artistId, accessToken, onClose }) => {
         </div>
       </div>
     </div>
+
   );
 };
 
