@@ -6,7 +6,7 @@ import styles from "./artistSearch.module.css";
 import { ProgressSpinner } from "primereact/progressspinner";
 import ArtistDetails from "./ArtistDetails";
 
-const ArtistSearch = ({ accessToken }) => {
+const ArtistSearch = ({ accessToken, handleAddToFavorites }) => {
   const [artists, setArtists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -83,6 +83,7 @@ const ArtistSearch = ({ accessToken }) => {
             artistId={selectedArtist}
             accessToken={accessToken}
             onClose={handleCloseArtistDetails}
+            handleAddToFavorites={handleAddToFavorites}
           />
         </div>
       )}

@@ -158,7 +158,7 @@ a {
       stroke: #1fff1f;
   }
   40% {
-      stroke: #0057e7;
+      stroke: #e70000;
   }
   66% {
       stroke: #16ff22;
@@ -169,3 +169,15 @@ a {
   }
 }
 
+.collapseButton {
+  background-color: #494949;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.collapseButton:hover {
+  background-color: #4ada45;
+}

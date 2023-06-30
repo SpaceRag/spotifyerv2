@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import styles from "./artistDetails.module.css";
+import { FaHeart } from "react-icons/fa";
+
 // import { MusicContext } from "./MusicContext";
 
 const ArtistDetails = ({ artistId, handleAddToFavorites, accessToken, onClose }) => {
@@ -14,7 +16,7 @@ const ArtistDetails = ({ artistId, handleAddToFavorites, accessToken, onClose })
   };
 
   // const { addFavoriteMusic } = useContext(MusicContext);
-  console.log(handleAddToFavorites);
+  // console.log(handleAddToFavorites);
 
   useEffect(() => {
     const fetchArtistDetails = async () => {
@@ -148,7 +150,7 @@ const ArtistDetails = ({ artistId, handleAddToFavorites, accessToken, onClose })
                     <span className={styles.trackDuration}>
                       {formatDuration(track.duration_ms)}
                       <button className={styles.AddButton} onClick={() => handleAddToFavorites(track)}>
-                        Add to Favorites
+                      <FaHeart className={styles.heartIcon} />
                       </button>
                     </span>
                   </div>
