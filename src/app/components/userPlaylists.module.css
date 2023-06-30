@@ -18,12 +18,10 @@
   color: #ffffff;
 }
 
-/* .playlistHeader {
-  margin: 10px;
-  background-color: #7a7a7a;
-  border-radius: 5px;
-  
-} */
+.playlist li {
+  list-style: none;
+  padding: 0;
+}
 
 .playlistHeader h3 {
   color: #4ada45;

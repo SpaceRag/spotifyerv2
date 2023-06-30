@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./userPlaylists.module.css";
 
-export default function UserPlaylists() {
+const UserPlaylists = () => {
   const [playlistName, setPlaylistName] = useState("");
   const [playlists, setPlaylists] = useState([]);
-  const [selectedPlaylist, setSelectedPlaylist] = useState("");
-  const [selectedTrack, setSelectedTrack] = useState("");
-
-  useEffect(() => {
-    const storedPlaylists = localStorage.getItem("playlists");
-    if (storedPlaylists) {
-      setPlaylists(JSON.parse(storedPlaylists));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("playlists", JSON.stringify(playlists));
-  }, [playlists]);
+  const [trackName, setTrackName] = useState("");
+  const [currentPlaylistIndex, setCurrentPlaylistIndex] = useState(0);
 
   const handlePlaylistNameChange = (event) => {
     setPlaylistName(event.target.value);
@@ -31,24 +20,22 @@ export default function UserPlaylists() {
     setPlaylistName("");
   };
 
-  // const handleAddTrack = () => {
-  //   if (selectedPlaylist && selectedTrack) {
-  //     const updatedPlaylists = playlists.map((playlist) => {
-  //       if (playlist === selectedPlaylist) {
-  //         const updatedTracks = [...playlist.tracks, selectedTrack];
-  //         return { ...playlist, tracks: updatedTracks };
-  //       }
-  //       return playlist;
-  //     });
-  //     setPlaylists(updatedPlaylists);
-  //     setSelectedTrack(null);
-  //   }
-  // };
+  const handleTrackNameChange = (event) => {
+    setTrackName(event.target.value);
+  };
 
-  const handleDeletePlaylist = (index) => {
-    const updatedPlaylists = [...playlists];
-    updatedPlaylists.splice(index, 1);
-    setPlaylists(updatedPlaylists);
+  const handleAddTrack = () => {
+    if (trackName) {
+      const updatedPlaylists = [...playlists];
+      const currentPlaylist = updatedPlaylists[currentPlaylistIndex];
+      currentPlaylist.tracks.push(trackName);
+      setPlaylists(updatedPlaylists);
+      setTrackName("");
+    }
+  };
+
+  const handlePlaylistChange = (index) => {
+    setCurrentPlaylistIndex(index);
   };
 
   return (
@@ -66,38 +53,42 @@ export default function UserPlaylists() {
           Create Playlist
         </button>
       </div>
-
-      {playlists.map((playlist, index) => (
-        <div className={styles.playlist} key={index}>
-          <div className={styles.playlistHeader}>
-            <h3>Playlist: {playlist.name}</h3>
-            <button
-              onClick={() => handleDeletePlaylist(index)}
-              className={styles.deleteButton}
-            >
-              Delete
-            </button>
-
-            {/* <div className={styles.addTrackContainer}>
-            <input
-              type="text"
-              placeholder="Track Name"
-              value={selectedTrack}
-              onChange={(e) => setSelectedTrack(e.target.value)}
-              className={styles.trackInput}
-            />
-            <button onClick={handleAddTrack} className={styles.addTrackButton}>
-              Add Track
-            </button>
-          </div> */}
+      <div className={styles.playlistSelection}>
+        <h3>Playlists:</h3>
+        {playlists.map((playlist, index) => (
+          <div
+            key={index}
+            className={`${styles.playlistOption} ${
+              index === currentPlaylistIndex ? styles.active : ""
+            }`}
+            onClick={() => handlePlaylistChange(index)}
+          >
+            {playlist.name}
           </div>
-          <ul>
-            {playlist.tracks.map((track, trackIndex) => (
-              <li key={trackIndex}>{track}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+        ))}
+      </div>
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          placeholder="Track Name"
+          value={trackName}
+          onChange={handleTrackNameChange}
+          className={styles.trackInput}
+        />
+        <button onClick={handleAddTrack} className={styles.createButton}>
+          Add
+        </button>
+      </div>
+      <div className={styles.playlist}>
+        <h3>Current Playlist: {playlists[currentPlaylistIndex]?.name}</h3>
+        <ul>
+          {playlists[currentPlaylistIndex]?.tracks.map((track, index) => (
+            <li key={index}>{track}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-}
+};
+
+export default UserPlaylists;

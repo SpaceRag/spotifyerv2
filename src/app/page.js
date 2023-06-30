@@ -37,7 +37,7 @@ export default function Home() {
         <div
           style={{
             width: isExpanded ? "20%" : "0%",
-            height: "90vh",
+            height: "100vh",
             background: "#2b2b2b",
             marginTop: "20px",
             borderRadius: "5px",
