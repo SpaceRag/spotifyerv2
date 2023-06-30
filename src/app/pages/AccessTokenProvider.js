@@ -8,8 +8,8 @@ export const AccessTokenProvider = ({ children }) => {
   useEffect(() => {
     async function fetchAccessToken() {
       try {
-        const clientId = "d001a849cc664ee7af9693ae3d5d79c6";
-        const clientSecret = "e9645dedff224e50b2e073f7fb69df84";
+        const clientId = "";
+        const clientSecret = "";
         const credentials = `${clientId}:${clientSecret}`;
         const encodedCredentials = Buffer.from(credentials).toString("base64");
 
