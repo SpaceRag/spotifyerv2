@@ -1,7 +1,7 @@
 import styles from "./userFavorites.module.css";
 
 export default function UserFavorites({ favoriteTracks }) {
-  console.log("Favorite Tracks:", favoriteTracks);
+  console.log("UserFavorite got it:", favoriteTracks);
 
   return (
     <div className={styles.userFavoritesContainer}>

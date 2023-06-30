@@ -2,11 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import styles from "./artistDetails.module.css";
 // import { MusicContext } from "./MusicContext";
 
-const ArtistDetails = ({ artistId, accessToken, onClose }) => {
+const ArtistDetails = ({ artistId, handleAddToFavorites, accessToken, onClose }) => {
   const [artistDetails, setArtistDetails] = useState(null);
   const [topTracks, setTopTracks] = useState([]);
   const [relatedArtists, setRelatedArtists] = useState([]);
-  const [favoriteTracks, setFavoriteTracks] = useState([]);
 
   const formatDuration = (durationMs) => {
     const minutes = Math.floor(durationMs / 60000);
@@ -15,11 +14,7 @@ const ArtistDetails = ({ artistId, accessToken, onClose }) => {
   };
 
   // const { addFavoriteMusic } = useContext(MusicContext);
-
-  const handleAddToFavorites = (track) => {
-    setFavoriteTracks([...favoriteTracks, track]);
-    console.log("Ajout aux favs", favoriteTracks);
-  };
+  console.log(handleAddToFavorites);
 
   useEffect(() => {
     const fetchArtistDetails = async () => {
@@ -153,7 +148,7 @@ const ArtistDetails = ({ artistId, accessToken, onClose }) => {
                     <span className={styles.trackDuration}>
                       {formatDuration(track.duration_ms)}
                       <button className={styles.AddButton} onClick={() => handleAddToFavorites(track)}>
-                        Add to Favorits
+                        Add to Favorites
                       </button>
                     </span>
                   </div>
